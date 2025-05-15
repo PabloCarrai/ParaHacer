@@ -41,6 +41,15 @@ def eliminarTareas(tareas):
 def salirPrograma():
     limpiarPantalla()
     print("Muchas gracias por usar este programa ")
+    print("""
+
+▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖  ▗▖▗▄▄▄▖▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖   ▗▖ ▗▖▗▄▄▄▖ ▗▄▄▖ ▗▄▖ 
+▐▛▚▖▐▌▐▌ ▐▌▐▌       ▐▌  ▐▌▐▌   ▐▛▚▞▜▌▐▌ ▐▌▐▌       ▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌ ▐▌
+▐▌ ▝▜▌▐▌ ▐▌ ▝▀▚▖    ▐▌  ▐▌▐▛▀▀▘▐▌  ▐▌▐▌ ▐▌ ▝▀▚▖    ▐▌   ▐▌ ▐▌▐▛▀▀▘▐▌▝▜▌▐▌ ▐▌
+▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘     ▝▚▞▘ ▐▙▄▄▖▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘    ▐▙▄▄▖▝▚▄▞▘▐▙▄▄▖▝▚▄▞▘▝▚▄▞▘
+
+
+            """)
 
 #   Menu del programa
 def menu():

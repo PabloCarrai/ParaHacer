@@ -4,92 +4,9 @@ import os
 #   Tareas es una lista que va a guardar las tareas
 tareas = []
 
-#   Con esto limpio la pantalla(solo en ambiente gnu/linux)
-
-
 def limpiarPantalla():
+    #   Con esto limpio la pantalla(solo en ambiente gnu/linux)
     os.system('cls' if os.name == 'nt' else 'clear')
-
-
-def flujoAplicacion(desicion):
-    print(f"Su eleccion {desicion}")
-    if (desicion == 5):
-        salirPrograma()
-    elif (desicion == 1):
-        listarTareas(tareas)
-        menu()
-        # listarTareas(["tareas","tareas"])
-    elif (desicion == 2):
-        agregarTareas(tareas)
-        menu()
-    elif (desicion == 3):
-        eliminarTareas(tareas)
-        menu()
-    elif (desicion == 4):
-        editarTareas(tareas)
-        menu()
-
-
-#   Listamos las tareas y sus indices
-def listarTareas(tareas):
-    limpiarPantalla()
-    if (len(tareas) == 0):
-        print("No hay tareas cargadas")
-    else:
-        print("Tareas")
-        for i in range(len(tareas)):
-            print(f"{i}-{tareas[i]}")
-
-
-#   Editamos las tareas por si las cargamos mal
-
-
-def editarTareas(tareas):
-    if (len(tareas) == 0):
-        print("No hay tareas para editar")
-    else:
-        listarTareas(tareas)
-        indice = int(input("Ingrese el indice de la tarea a editar  "))
-        editado = input("Ingrese la tarea correcta  ")
-        tareas[indice] = editado
-
-#   Agregamos las tareas
-
-
-def agregarTareas(tareas):
-    limpiarPantalla()
-    titulo = input("Ingrese su tarea ")
-    tareas.append(titulo)
-    menu()
-
-#   Eliminar Tareas
-
-
-def eliminarTareas(tareas):
-    limpiarPantalla()    
-    if (len(tareas) > 0):
-        listarTareas(tareas)
-        eleccion = int(input("Ingresa el numero de la tarea a eliminar"))
-        del tareas[eleccion]
-    else:
-        print("no hay tarea para eliminar")
-
-
-#   Salimos del programa
-def salirPrograma():
-    limpiarPantalla()
-    print("Muchas gracias por usar este programa ")
-    print("""
-
-▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖  ▗▖▗▄▄▄▖▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖   ▗▖ ▗▖▗▄▄▄▖ ▗▄▄▖ ▗▄▖ 
-▐▛▚▖▐▌▐▌ ▐▌▐▌       ▐▌  ▐▌▐▌   ▐▛▚▞▜▌▐▌ ▐▌▐▌       ▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌ ▐▌
-▐▌ ▝▜▌▐▌ ▐▌ ▝▀▚▖    ▐▌  ▐▌▐▛▀▀▘▐▌  ▐▌▐▌ ▐▌ ▝▀▚▖    ▐▌   ▐▌ ▐▌▐▛▀▀▘▐▌▝▜▌▐▌ ▐▌
-▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘     ▝▚▞▘ ▐▙▄▄▖▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘    ▐▙▄▄▖▝▚▄▞▘▐▙▄▄▖▝▚▄▞▘▝▚▄▞▘
-
-
-            """)
-
-#   Menu del programa
 
 
 def menu():
@@ -112,9 +29,79 @@ def menu():
         +-----------------------------+
 
           """)
-    desicion = int(input(""))
-    flujoAplicacion(desicion)
 
 
-#   Arrancamos el programa
-menu()
+def flujoAplicacion(opciones):
+    #   Manejamos el menu y el acceso a las opciones
+    print(f"Su eleccion {opciones}")
+    if (opciones == 1):
+        listarTareas(tareas)
+    elif (opciones == 2):
+        agregarTareas(tareas)
+    elif (opciones == 3):
+        eliminarTareas(tareas)
+    elif (opciones == 4):
+        editarTareas(tareas)
+
+
+def listarTareas(tareas):
+    #   Listamos las tareas y sus indices
+    limpiarPantalla()
+    if (len(tareas) == 0):
+        print("No hay tareas cargadas")
+    else:
+        print("Tareas")
+        for i in range(len(tareas)):
+            print(f"{i}-{tareas[i]}")
+
+
+def editarTareas(tareas):
+    #   Editamos las tareas por si las cargamos mal
+    if (len(tareas) == 0):
+        print("No hay tareas para editar")
+    else:
+        listarTareas(tareas)
+        indice = int(input("Ingrese el indice de la tarea a editar  "))
+        editado = input("Ingrese la tarea correcta  ")
+        tareas[indice] = editado
+
+
+def agregarTareas(tareas):
+    #   Agregamos las tareas
+    limpiarPantalla()
+    titulo = input("Ingrese su tarea ")
+    tareas.append(titulo)
+
+
+def eliminarTareas(tareas):
+    #   Eliminar Tareas
+    limpiarPantalla()
+    if (len(tareas) > 0):
+        listarTareas(tareas)
+        eleccion = int(input("Ingresa el indice de la tarea a eliminar  "))
+        del tareas[eleccion]
+    else:
+        print("No hay tarea para eliminar")
+
+
+def salirPrograma():
+    #   Salimos del programa
+    limpiarPantalla()
+    print("""
+
+▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖  ▗▖▗▄▄▄▖▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖   ▗▖ ▗▖▗▄▄▄▖ ▗▄▄▖ ▗▄▖ 
+▐▛▚▖▐▌▐▌ ▐▌▐▌       ▐▌  ▐▌▐▌   ▐▛▚▞▜▌▐▌ ▐▌▐▌       ▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌ ▐▌
+▐▌ ▝▜▌▐▌ ▐▌ ▝▀▚▖    ▐▌  ▐▌▐▛▀▀▘▐▌  ▐▌▐▌ ▐▌ ▝▀▚▖    ▐▌   ▐▌ ▐▌▐▛▀▀▘▐▌▝▜▌▐▌ ▐▌
+▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘     ▝▚▞▘ ▐▙▄▄▖▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘    ▐▙▄▄▖▝▚▄▞▘▐▙▄▄▖▝▚▄▞▘▝▚▄▞▘
+            """)
+
+
+while True:
+    #   Arrancamos el programa
+    menu()
+    opciones = int(input("Elija "))
+    flujoAplicacion(opciones)
+    if opciones == 5:
+        break
+
+salirPrograma()

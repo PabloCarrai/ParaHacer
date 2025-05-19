@@ -66,7 +66,9 @@ def agregarTareas(tareas):
 
 
 def eliminarTareas(tareas):
+    limpiarPantalla()    
     if (len(tareas) > 0):
+        listarTareas(tareas)
         eleccion = int(input("Ingresa el numero de la tarea a eliminar"))
         del tareas[eleccion]
     else:

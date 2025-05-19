@@ -11,31 +11,47 @@ def limpiarPantalla():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def volverMenu():
-    volvemos = int(input("Regresamos al menu? 1=Si"))
-    if (volvemos == 1):
-        limpiarPantalla()
+def flujoAplicacion(desicion):
+    print(f"Su eleccion {desicion}")
+    if (desicion == 5):
+        salirPrograma()
+    elif (desicion == 1):
+        listarTareas(tareas)
+        menu()
+        # listarTareas(["tareas","tareas"])
+    elif (desicion == 2):
+        agregarTareas(tareas)
+        menu()
+    elif (desicion == 3):
+        eliminarTareas(tareas)
+        menu()
+    elif (desicion == 4):
+        editarTareas(tareas)
         menu()
 
 
 #   Listamos las tareas y sus indices
-
-
 def listarTareas(tareas):
     limpiarPantalla()
-    print("Tareas")
-    for i in range(len(tareas)):
-        print(f"{i}-{tareas[i]}")
-    volverMenu()
+    if (len(tareas) == 0):
+        print("No hay tareas cargadas")
+    else:
+        print("Tareas")
+        for i in range(len(tareas)):
+            print(f"{i}-{tareas[i]}")
+
 
 #   Editamos las tareas por si las cargamos mal
 
 
 def editarTareas(tareas):
-    listarTareas(tareas)
-    indice = int(input("Ingrese el indice de la tarea a editar  "))
-    editado = input("Ingrese la tarea correcta  ")
-    tareas[indice] = editado
+    if (len(tareas) == 0):
+        print("No hay tareas para editar")
+    else:
+        listarTareas(tareas)
+        indice = int(input("Ingrese el indice de la tarea a editar  "))
+        editado = input("Ingrese la tarea correcta  ")
+        tareas[indice] = editado
 
 #   Agregamos las tareas
 
@@ -44,17 +60,20 @@ def agregarTareas(tareas):
     limpiarPantalla()
     titulo = input("Ingrese su tarea ")
     tareas.append(titulo)
+    menu()
 
 #   Eliminar Tareas
 
 
 def eliminarTareas(tareas):
-    pass
+    if (len(tareas) > 0):
+        eleccion = int(input("Ingresa el numero de la tarea a eliminar"))
+        del tareas[eleccion]
+    else:
+        print("no hay tarea para eliminar")
 
 
 #   Salimos del programa
-
-
 def salirPrograma():
     limpiarPantalla()
     print("Muchas gracias por usar este programa ")
@@ -72,6 +91,11 @@ def salirPrograma():
 
 
 def menu():
+    """
+    Esta funcion solo muestra un menu y redirige la eleccion del 
+    usuario a otra aplicacion que se encarga de llamar a las funciones
+    deacuerdo a lo que el usuario defina
+    """
     print("""
         +-----------------------------+
         |    Bienvenido               |                
@@ -87,19 +111,7 @@ def menu():
 
           """)
     desicion = int(input(""))
-    print(f"Su eleccion {desicion}")
-    if (desicion == 5):
-        salirPrograma()
-    elif (desicion == 1):
-        listarTareas(tareas)
-    elif (desicion == 2):
-        agregarTareas(tareas)
-        volverMenu()
-    elif (desicion == 3):
-        eliminarTareas(tareas)
-    elif (desicion == 4):
-        editarTareas(tareas)
-        volverMenu()
+    flujoAplicacion(desicion)
 
 
 #   Arrancamos el programa

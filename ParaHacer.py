@@ -4,6 +4,21 @@ import os
 #   Tareas es una lista que va a guardar las tareas
 tareas = []
 
+
+def bienvenido():
+    global nombre
+    nombre = input("Su nombre: ")
+    print(f"""
+
+▗▄▄▖ ▄ ▗▞▀▚▖▄▄▄▄  ▄   ▄ ▗▞▀▚▖▄▄▄▄  ▄    ▐▌ ▄▄▄  
+▐▌ ▐▌▄ ▐▛▀▀▘█   █ █   █ ▐▛▀▀▘█   █ ▄    ▐▌█   █ 
+▐▛▀▚▖█ ▝▚▄▄▖█   █  ▀▄▀  ▝▚▄▄▖█   █ █ ▗▞▀▜▌▀▄▄▄▀ 
+▐▙▄▞▘█                             █ ▝▚▄▟▌      
+                                                
+                                                
+                {nombre}""")
+
+
 def limpiarPantalla():
     #   Con esto limpio la pantalla(solo en ambiente gnu/linux)
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -87,14 +102,21 @@ def eliminarTareas(tareas):
 def salirPrograma():
     #   Salimos del programa
     limpiarPantalla()
-    print("""
+    print(f"""
 
-▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖  ▗▖▗▄▄▄▖▗▖  ▗▖ ▗▄▖  ▗▄▄▖    ▗▖   ▗▖ ▗▖▗▄▄▄▖ ▗▄▄▖ ▗▄▖ 
-▐▛▚▖▐▌▐▌ ▐▌▐▌       ▐▌  ▐▌▐▌   ▐▛▚▞▜▌▐▌ ▐▌▐▌       ▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌ ▐▌
-▐▌ ▝▜▌▐▌ ▐▌ ▝▀▚▖    ▐▌  ▐▌▐▛▀▀▘▐▌  ▐▌▐▌ ▐▌ ▝▀▚▖    ▐▌   ▐▌ ▐▌▐▛▀▀▘▐▌▝▜▌▐▌ ▐▌
-▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘     ▝▚▞▘ ▐▙▄▄▖▐▌  ▐▌▝▚▄▞▘▗▄▄▞▘    ▐▙▄▄▖▝▚▄▞▘▐▙▄▄▖▝▚▄▞▘▝▚▄▞▘
-            """)
 
+▗▖  ▗▖ ▄▄▄   ▄▄▄     ▄   ▄ ▗▞▀▚▖▄▄▄▄   ▄▄▄   ▄▄▄     █ █  ▐▌▗▞▀▚▖  ▄▄▄  
+▐▛▚▖▐▌█   █ ▀▄▄      █   █ ▐▛▀▀▘█ █ █ █   █ ▀▄▄      █ ▀▄▄▞▘▐▛▀▀▘ █   █ 
+▐▌ ▝▜▌▀▄▄▄▀ ▄▄▄▀      ▀▄▀  ▝▚▄▄▖█   █ ▀▄▄▄▀ ▄▄▄▀     █      ▝▚▄▄▖ ▀▄▄▄▀ 
+▐▌  ▐▌                                               █          ▗▄▖     
+                                                               ▐▌ ▐▌    
+                                                                ▝▀▜▌    
+                                                               ▐▙▄▞▘  
+
+                                                    {nombre}""")
+
+
+bienvenido()
 
 while True:
     #   Arrancamos el programa

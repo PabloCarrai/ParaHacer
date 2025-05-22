@@ -48,7 +48,6 @@ def menu():
 
 def flujoAplicacion(opciones):
     #   Manejamos el menu y el acceso a las opciones
-    print(f"Su eleccion {opciones}")
     if (opciones == 1):
         listarTareas(tareas)
     elif (opciones == 2):
@@ -62,7 +61,7 @@ def flujoAplicacion(opciones):
 def listarTareas(tareas):
     #   Listamos las tareas y sus indices
     limpiarPantalla()
-    if (len(tareas) == 0):
+    if (len(tareas) < 1):
         print("No hay tareas cargadas")
     else:
         print("Tareas")
@@ -72,13 +71,18 @@ def listarTareas(tareas):
 
 def editarTareas(tareas):
     #   Editamos las tareas por si las cargamos mal
-    if (len(tareas) == 0):
+    limpiarPantalla()
+    if (len(tareas) < 1):
         print("No hay tareas para editar")
     else:
         listarTareas(tareas)
         indice = int(input("Ingrese el indice de la tarea a editar  "))
-        editado = input("Ingrese la tarea correcta  ")
-        tareas[indice] = editado
+        if (indice in range(len(tareas))):
+            editado = input("Ingrese la tarea correcta  ")
+            tareas[indice] = editado
+        else:
+            print("Elija un indice existente")
+            editarTareas(tareas)
 
 
 def agregarTareas(tareas):
@@ -94,7 +98,11 @@ def eliminarTareas(tareas):
     if (len(tareas) > 0):
         listarTareas(tareas)
         eleccion = int(input("Ingresa el indice de la tarea a eliminar  "))
-        del tareas[eleccion]
+        if (eleccion > len(tareas)):
+            print("Elija un indice valido ")
+            eliminarTareas(tareas)
+        else:
+            del tareas[eleccion]
     else:
         print("No hay tarea para eliminar")
 

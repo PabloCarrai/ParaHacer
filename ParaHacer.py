@@ -95,16 +95,15 @@ def agregarTareas(tareas):
 def eliminarTareas(tareas):
     #   Eliminar Tareas
     limpiarPantalla()
-    if (len(tareas) > 0):
+    if (len(tareas) < 1):
+        print("No hay tareas por editar ")
+    else:
         listarTareas(tareas)
         eleccion = int(input("Ingresa el indice de la tarea a eliminar  "))
-        if (eleccion > len(tareas)):
-            print("Elija un indice valido ")
-            eliminarTareas(tareas)
-        else:
+        if (eleccion in range(len(tareas))):
             del tareas[eleccion]
-    else:
-        print("No hay tarea para eliminar")
+        else:
+            eliminarTareas(tareas)
 
 
 def salirPrograma():
